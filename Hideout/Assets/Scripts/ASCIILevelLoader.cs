@@ -35,6 +35,7 @@ public class ASCIILevelLoader : MonoBehaviour
         set
         {
             currentLevel = value;
+            Debug.Log("currentLevel = " + currentLevel);
             LoadLevel();
         }
     }
@@ -53,6 +54,7 @@ public class ASCIILevelLoader : MonoBehaviour
     {
         //return player to the startPos
         currentPlayer.transform.position = startPos;
+        Debug.Log(startPos);
     }
     
     void LoadLevel()
@@ -97,13 +99,14 @@ public class ASCIILevelLoader : MonoBehaviour
                         //save this position to startPos to use for reseting the player
                         startPos = new Vector2(
                             x + xOffset, -y + yOffset);
+                        currentPlayer.transform.position = startPos;
                         break;
                     case 'w': //if char is a 'w'
                         //make a wall
                         newObj = Instantiate<GameObject>(wall);
                         break;
                     case '*': //if char is an '*'
-                        //make an obstacle
+                        //make an enemy
                         newObj = Instantiate<GameObject>(enemy);
                         break;
                     case '&': //if char is '&'
@@ -131,8 +134,11 @@ public class ASCIILevelLoader : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Advanced Level");
+        
+
     }
-    
+
     // Update is called once per frame
     void Update()
     {
