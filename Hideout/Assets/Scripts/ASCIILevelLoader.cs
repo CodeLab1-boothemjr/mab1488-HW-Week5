@@ -40,7 +40,7 @@ public class ASCIILevelLoader : MonoBehaviour
     }
     
     //empty game object that holds the level
-    public GameObject level;
+    private GameObject level;
     
     // Start is called before the first frame update
     void Start()
